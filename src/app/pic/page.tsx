@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import axios from 'axios';
 interface Picture {
@@ -9,13 +10,14 @@ interface Picture {
   ai: boolean;
 }
 const PicturePage = () => {
-    
+    const router = useRouter();
   const [name, setName] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [pictures, setPictures] = useState<{ id: number; src: string; ai: boolean }[]>([]);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
     console.log(current)
+    
    useEffect(() => {
     const fetchPictures = async () => {
       const res = await fetch("/api/pictures");
@@ -25,7 +27,11 @@ const PicturePage = () => {
 
     fetchPictures();
   }, []);
-
+  function redirecter(){
+        const timer = setTimeout(() => {
+      router.push('/scoreboard');
+    }, 2000);
+  }
   const handleGuess = (guess: boolean) => {
   const isCorrect = pictures[current].ai === guess;
 
@@ -72,6 +78,7 @@ const PicturePage = () => {
   }
 
   if (current >= pictures.length) {
+    redirecter();
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-green-100">
         <h1 className="text-3xl font-bold mb-6">Done, {name}!</h1>
