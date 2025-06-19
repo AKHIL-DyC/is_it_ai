@@ -19,6 +19,7 @@ model Picture {
   id    Int     @id @default(autoincrement())
   src   String
   ai    Boolean
+  isVideo Boolean
 }
 
 model UserScore {
