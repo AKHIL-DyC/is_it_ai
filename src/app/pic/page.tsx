@@ -98,7 +98,7 @@ const PicturePage = () => {
             placeholder="Your name"
           />
           <button
-            className="mt-4 bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900"
+            className=" ml-4 mt-4 bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900"
             onClick={() => name && setSubmitted(true)}
           >
             Start
