@@ -12,8 +12,8 @@ const Page = () => {
 
   useEffect(() => {
     const textTimeout = setTimeout(() => setShowText(false), 4000);
-    const revealTimeout = setTimeout(() => setStartReveal(true), 4500);
-    const redirectTimeout = setTimeout(() => router.push('/pic'), 4500);
+    const revealTimeout = setTimeout(() => setStartReveal(true), 5500);
+    const redirectTimeout = setTimeout(() => router.push('/rule'), 3800);
 
     return () => {
       clearTimeout(textTimeout);
@@ -33,7 +33,7 @@ const Page = () => {
             exit={{ height: 0 }}
             transition={{ duration: 1 }}
           >
-            <MorphingText texts={["AI", "OR", "NOT", " "]} />
+            <MorphingText texts={[" ","AI", "OR", "NOT", " "]} />
           </motion.div>
         )}
       </AnimatePresence>

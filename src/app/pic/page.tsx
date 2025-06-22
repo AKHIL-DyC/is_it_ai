@@ -21,6 +21,7 @@ const PicturePage = () => {
   const [score, setScore] = useState(0);
   const [questionStartTime, setQuestionStartTime] = useState<number | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [email, setEmail] = useState('');
 
   // Fetch images from backend
   useEffect(() => {
@@ -72,7 +73,7 @@ const PicturePage = () => {
 
   // Send final score to backend
   const submitScore = async (finalScore: number) => {
-    await axios.post('/api/score', { name, score: finalScore });
+    await axios.post('/api/score', { name, score: finalScore,email:email });
   };
 
   
@@ -88,23 +89,35 @@ const PicturePage = () => {
   
   if (!submitted) {
     return (
-      <div className="flex h-screen items-center justify-center bg-amber-50">
-        <div className="bg-white p-6 rounded-xl shadow-xl text-center">
-          <h2 className="text-2xl font-bold mb-4">Enter your name</h2>
-          <input
-            className="border p-2 rounded-lg w-64"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-          />
-          <button
-            className=" ml-4 mt-4 bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900"
-            onClick={() => name && setSubmitted(true)}
-          >
-            Start
-          </button>
-        </div>
-      </div>
+     <div className="flex h-screen items-center justify-center bg-amber-50">
+  <div className="bg-white p-6 rounded-xl shadow-xl text-center">
+    <h2 className="text-2xl font-bold mb-4">Enter your full name and email</h2>
+
+    <input
+      className="border p-2 rounded-lg w-64 mb-4"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Full Name"
+    />
+    <br />
+
+    <input
+      className="border p-2 rounded-lg w-64"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="Email"
+      type="email"
+    />
+    <br/>
+    <button
+      className="ml-4 mt-4 bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900"
+      onClick={() => name && email && setSubmitted(true)}
+    >
+      Start
+    </button>
+  </div>
+</div>
+
     );
   }
 
