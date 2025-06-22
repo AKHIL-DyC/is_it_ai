@@ -23,11 +23,18 @@ const PicturePage = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [email, setEmail] = useState('');
 
+    const addTransform = (src: string) => {
+  return src.replace('/upload/', '/upload/w_800,h_600/');
+};
   // Fetch images from backend
   useEffect(() => {
     const fetchPictures = async () => {
       const res = await fetch('/api/pictures');
       const data = await res.json();
+      const transformed = data.map((pic: any) => ({
+      ...pic,
+      src: addTransform(pic.src),
+    }));
       setPictures(data.sort(() => Math.random() - 0.5));
     };
     fetchPictures();
@@ -48,6 +55,9 @@ const PicturePage = () => {
     }
   }, [submitted, current, pictures]);
 
+
+
+  
   // Handle user's guess
   const handleGuess = (guess: boolean) => {
     if (!questionStartTime) return;
@@ -141,25 +151,26 @@ const PicturePage = () => {
       </div>
 
       {/* Image or Video */}
-      <div className="flex h-[80vh] bg-amber-50 p-6 items-center justify-center">
-        <div className="h-[70vh] w-[70vw] bg-white rounded-xl shadow overflow-hidden flex items-center justify-center">
-          {pictures[current].isVideo ? (
-            <video
-              src={pictures[current].src}
-              controls
-              className="w-full h-full object-contain rounded-xl"
-            />
-          ) : (
-            <Image
-              src={pictures[current].src}
-              alt="quiz pic"
-              width={700}
-              height={500}
-              className="object-contain"
-            />
-          )}
-        </div>
-      </div>
+   <div className="flex h-[80vh] bg-amber-50 p-6 items-center justify-center">
+  <div className="h-[70vh] w-[70vw] bg-white rounded-xl shadow overflow-hidden flex items-center justify-center">
+    {pictures[current].isVideo ? (
+      <video
+        src={`${pictures[current].src}#t=0.1`}
+        controls
+        preload="metadata"
+        className="w-full h-full object-contain rounded-xl"
+      />
+    ) : (
+      <img
+        src={pictures[current].src}
+        alt="quiz pic"
+        className="w-full h-full object-contain rounded-xl"
+      />
+    )}
+  </div>
+</div>
+
+
 
       {/* Buttons */}
       <div className="flex h-[20vh] items-center justify-center gap-6">
