@@ -170,7 +170,7 @@ const PicturePage = () => {
         <button
           className="px-8 py-4 bg-amber-800 text-white rounded-xl text-lg hover:bg-amber-900"
           onClick={() => handleGuess(false)}
-        >NOT AI</button>
+        >REAL</button>
       </div>
     </div>
   );
