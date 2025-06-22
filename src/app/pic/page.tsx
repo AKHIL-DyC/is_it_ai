@@ -158,8 +158,12 @@ useEffect(() => {
   return (
     <div className="flex flex-col h-screen w-screen relative">
       {/* Timer */}
-      <div className="absolute top-4 left-4 bg-[#121212] text-amber-800 px-4 py-2 rounded-lg shadow font-semibold z-10">
+      <div className="absolute top-4 left-4 bg-white text-amber-800 px-4 py-2 rounded-lg shadow font-semibold z-10">
         Time: {elapsedTime}s
+      </div>
+
+      <div className=' absolute top-4 right-5  bg-white text-blue-800 px-4 py-2 rounded-lg shadow font-semibold z-10'>
+        {current}/{pictures.length}
       </div>
 
       {/* Image or Video */}
