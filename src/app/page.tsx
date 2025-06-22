@@ -23,17 +23,17 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative h-screen w-screen bg-amber-50 overflow-hidden">
+    <div className="relative h-screen w-screen bg-[#121212] overflow-hidden">
       <AnimatePresence>
         {showText && (
           <motion.div
-            className="flex h-screen w-screen items-center justify-center bg-amber-50 absolute top-0 left-0 z-10"
+            className="flex h-screen w-screen items-center justify-center bg-[#121212]  absolute top-0 left-0 z-10"
             initial={{ height: '100%' }}
             animate={{ height: '100%' }}
             exit={{ height: 0 }}
             transition={{ duration: 1 }}
           >
-            <MorphingText texts={[" ","AI", "OR", "NOT", " "]} />
+            <MorphingText texts={[" ","REAL", "OR", "AI", " "]} />
           </motion.div>
         )}
       </AnimatePresence>
