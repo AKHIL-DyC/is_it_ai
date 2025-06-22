@@ -24,7 +24,7 @@ const PicturePage = () => {
   const [email, setEmail] = useState('');
 
     const addTransform = (src: string) => {
-  return src.replace('/upload/', '/upload/w_800,h_600/');
+  return src.replace('/upload/', '/upload/c_limit,w_800,f_auto,q_auto/');
 };
   // Fetch images from backend
 useEffect(() => {
@@ -176,7 +176,7 @@ useEffect(() => {
       <img
         src={pictures[current].src}
         alt="quiz pic"
-        className="w-full h-full object-contain rounded-xl"
+       className="max-w-[90%] max-h-[90%] object-contain rounded-xl"
       />
     )}
   </div>
