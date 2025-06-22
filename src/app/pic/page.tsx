@@ -141,7 +141,7 @@ const PicturePage = () => {
       </div>
 
       {/* Image or Video */}
-      <div className="flex h-[80vh] bg-amber-800 p-6 items-center justify-center">
+      <div className="flex h-[80vh] bg-amber-50 p-6 items-center justify-center">
         <div className="h-[70vh] w-[70vw] bg-white rounded-xl shadow overflow-hidden flex items-center justify-center">
           {pictures[current].isVideo ? (
             <video

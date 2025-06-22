@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
+import ConfettiSideCannons from '@/components/mycomponents/Myconfetti';
 interface Score {
   id: number;
   name: string;
@@ -22,6 +22,7 @@ const ScoreboardPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-green-100 p-8">
+      <ConfettiSideCannons/>
       <h1 className="text-4xl font-bold text-amber-800 mb-8">🏆 Scoreboard</h1>
       <div className="bg-white rounded-xl shadow-xl overflow-hidden w-full max-w-2xl">
         <table className="min-w-full text-center">
