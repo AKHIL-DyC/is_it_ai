@@ -45,7 +45,7 @@ const ScoreboardPage = () => {
             {scores.map((player, index) => (
               <tr
                 key={player.id}
-                className={index % 2 === 0 ? 'bg-green-950' : 'bg-green-800'}
+                className={index % 2 === 0 ? 'bg-[#232323]' : 'bg-[#323232]'}
               >
                 <td className="py-3 px-4 font-medium">{index + 1}</td>
                 <td className="py-3 px-4">{player.name}</td>

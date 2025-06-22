@@ -111,12 +111,12 @@ useEffect(() => {
   
   if (!submitted) {
     return (
-     <div className="flex h-screen items-center justify-center bg-amber-50">
-  <div className="bg-white p-6 rounded-xl shadow-xl text-center">
-    <h2 className="text-2xl font-bold mb-4">Enter your full name and email</h2>
+     <div className="flex h-screen items-center justify-center bg-[#121212]">
+  <div className="bg-[#232525] p-6 rounded-xl shadow-xl text-center">
+    <h2 className="text-2xl font-bold mb-4 text-white">Enter your full name and email</h2>
 
     <input
-      className="border p-2 rounded-lg w-64 mb-4"
+      className="border border-white p-2 text-white  rounded-lg w-64 mb-4"
       value={name}
       onChange={(e) => setName(e.target.value)}
       placeholder="Full Name"
@@ -124,7 +124,7 @@ useEffect(() => {
     <br />
 
     <input
-      className="border p-2 rounded-lg w-64"
+      className="border border-white text-white p-2 rounded-lg w-64"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       placeholder="Email"
@@ -132,7 +132,7 @@ useEffect(() => {
     />
     <br/>
     <button
-      className="ml-4 mt-4 bg-amber-800 text-white px-6 py-2 rounded-lg hover:bg-amber-900"
+      className="ml-4 mt-4 bg-amber-400 text-black px-6 py-2 rounded-lg hover:bg-amber-300"
       onClick={() => name && email && setSubmitted(true)}
     >
       Start
@@ -158,7 +158,7 @@ useEffect(() => {
   return (
     <div className="flex flex-col h-screen w-screen relative">
       {/* Timer */}
-      <div className="absolute top-4 left-4 bg-white text-amber-800 px-4 py-2 rounded-lg shadow font-semibold z-10">
+      <div className="absolute top-4 left-4 bg-[#121212] text-amber-800 px-4 py-2 rounded-lg shadow font-semibold z-10">
         Time: {elapsedTime}s
       </div>
 
@@ -187,11 +187,11 @@ useEffect(() => {
       {/* Buttons */}
       <div className="flex h-[20vh] items-center justify-center gap-6">
         <button
-          className="px-8 py-4 bg-amber-800 text-white rounded-xl text-lg hover:bg-amber-900"
+          className="px-8 py-4 bg-amber-400 text-white rounded-xl text-lg hover:bg-amber-300"
           onClick={() => handleGuess(true)}
         >AI</button>
         <button
-          className="px-8 py-4 bg-amber-800 text-white rounded-xl text-lg hover:bg-amber-900"
+          className="px-8 py-4 bg-amber-400 text-white rounded-xl text-lg hover:bg-amber-300"
           onClick={() => handleGuess(false)}
         >REAL</button>
       </div>
