@@ -27,33 +27,45 @@ const PicturePage = () => {
   return src.replace('/upload/', '/upload/w_800,h_600/');
 };
   // Fetch images from backend
-  useEffect(() => {
-    const fetchPictures = async () => {
-      const res = await fetch('/api/pictures');
-      const data = await res.json();
-      const transformed = data.map((pic: any) => ({
+useEffect(() => {
+  const fetchPictures = async () => {
+    const res = await fetch('/api/pictures');
+    const data = await res.json();
+    const transformed = data.map((pic: any) => ({
       ...pic,
       src: addTransform(pic.src),
     }));
-      setPictures(data.sort(() => Math.random() - 0.5));
-    };
-    fetchPictures();
-  }, []);
+    setPictures(transformed.sort(() => Math.random() - 0.5)); // 👈 use transformed!
+  };
+  fetchPictures();
+}, []);
 
-  // Start timer when new question is shown
-  useEffect(() => {
-    if (submitted && pictures.length > 0 && current < pictures.length) {
-      const now = Date.now();
-      setQuestionStartTime(now);
-      setElapsedTime(0);
+// Start timer when new question is shown
+useEffect(() => {
+  if (submitted && pictures.length > 0 && current < pictures.length) {
+    const now = Date.now();
+    setQuestionStartTime(now);
+    setElapsedTime(0);
 
-      const interval = setInterval(() => {
-        setElapsedTime(Math.floor((Date.now() - now) / 1000));
-      }, 1000);
+    const interval = setInterval(() => {
+      setElapsedTime(Math.floor((Date.now() - now) / 1000));
+    }, 1000);
 
-      return () => clearInterval(interval);
+    return () => clearInterval(interval);
+  }
+}, [submitted, current, pictures]);
+
+// ✅ Preload next image in background
+useEffect(() => {
+  if (pictures.length > 0 && current + 1 < pictures.length) {
+    const next = pictures[current + 1];
+    if (!next.isVideo) {
+      const img = new window.Image();
+      img.src = next.src;
     }
-  }, [submitted, current, pictures]);
+  }
+}, [current, pictures]);
+
 
 
 
