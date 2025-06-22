@@ -11,8 +11,8 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const textTimeout = setTimeout(() => setShowText(false), 4000);
-    const revealTimeout = setTimeout(() => setStartReveal(true), 5500);
+    const textTimeout = setTimeout(() => setShowText(false), 9000);
+    const revealTimeout = setTimeout(() => setStartReveal(true), 9500);
     const redirectTimeout = setTimeout(() => router.push('/rule'), 3800);
 
     return () => {
