@@ -95,7 +95,8 @@ useEffect(() => {
 
   // Send final score to backend
   const submitScore = async (finalScore: number) => {
-    await axios.post('/api/score', { name, score: finalScore,email:email });
+     const token = localStorage.getItem('quiz_token');
+    await axios.post('/api/score', { name, score: finalScore,email:email,token});
   };
 
   
@@ -133,7 +134,15 @@ useEffect(() => {
     <br/>
     <button
       className="ml-4 mt-4 bg-amber-400 text-black px-6 py-2 rounded-lg hover:bg-amber-300"
-      onClick={() => name && email && setSubmitted(true)}
+      onClick={() => {
+  if (name && email) {
+    const token = crypto.randomUUID();
+    localStorage.setItem('quiz_token', token);
+    document.cookie = `quiz_token=${token}; path=/`;
+    setSubmitted(true);
+  }
+}}
+
     >
       Start
     </button>
