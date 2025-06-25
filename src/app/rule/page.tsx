@@ -42,6 +42,12 @@ const RulesPage = () => {
           <li>
             Ensure a <strong>strong internet connection</strong> to avoid delays in loading content — because <span className="text-amber-400 font-semibold">every second matters</span>!
           </li>
+          <br/>
+          <li>
+  <strong>Note:</strong> The official competition is now <span className="text-red-400 font-semibold">closed</span>. 
+  You can still try the quiz <span className="text-green-400 font-semibold">for fun</span>, but your score won't be counted for prize.
+</li>
+
         </ul>
 
         <div className="flex justify-center pt-4">
